@@ -1,0 +1,22 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+
+class Engine {
+    public:
+        void run();
+};
+
+class Car {
+    Engine engine;
+
+    public:
+        Car() {
+            //Объект не динамический, уничтожится сам)
+            this->engine = Engine();
+        }
+
+        void start() {
+            this->engine.run();
+        }
+};
