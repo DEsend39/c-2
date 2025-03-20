@@ -1,0 +1,32 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+
+class Programmer;
+
+
+class Maneger {
+	private:
+		std::vector<Programmer*> programmers;
+	public:
+		Manager(std::vector<Programmer*> programmers) {
+			this->programmers = programmers;
+		}
+
+		void addProgrammer(Programmer* programmer) {
+			this->programmers.push_back(programmer);
+		}
+
+		std::vector<Programmer*> getProgrammers() {
+			return this->programmers;
+		}
+};
+
+class Programmer {
+	private:
+		Maneger* maneger;
+	public:
+		Programmer(Maneger* maneger) {
+			this->maneger = maneger;
+		}
+};
