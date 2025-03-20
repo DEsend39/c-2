@@ -1,0 +1,23 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+class Student {
+
+};
+
+class University {
+private:
+	std::vector<Student*> students;
+public:
+	University(std::vector<Student*> students) {
+		this->students = students;
+	}
+
+	void addStudent(Student* student) {
+		this->students.push_back(student);
+	}
+
+	std::vector<Student*> listStudents() {
+		return this->students;
+	}
+};
