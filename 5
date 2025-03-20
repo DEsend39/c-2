@@ -1,0 +1,52 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+
+
+class Person {
+    protected:
+        std::string name;
+        int age;
+    public:
+        Person(std::string name, int age) {
+            this->name = name;
+            this->age = age;
+        }
+};
+
+class Student : virtual public Person {
+    protected:
+        std::string university;
+    public:
+        Student(std::string name, int age, std::string university) : Person(name, age) {
+            this->university = university;
+        }
+};
+
+class Worker : virtual public Person {
+    protected:
+    std::string company;
+    public:
+        Worker(std::string name, int age, std::string company) : Person(name, age) {
+            this->company = company;
+        }
+};
+
+class Intern : public Worker, public Student {
+    private:
+    public:
+        Intern(std::string name, int age, std::string company, std::string university) : Worker(name, age, company), Student(name, age, university), Person(name, age) {
+
+        }
+
+        void printInfo() {
+            std::cout << "Intern info: \n" << "name: " << name << '\n' << "age: " << age << '\n' << "company: " << company << '\n' << "university: " << university << '\n';
+        }
+};
+
+
+
+int main()
+{
+    Intern("Alex", 18, "Microsoft", "MIT").printInfo();
+}
