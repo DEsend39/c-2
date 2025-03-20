@@ -1,0 +1,43 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+
+class Employee {
+    private:
+        std::string name;
+        int salary;
+    public:
+        Employee(std::string name, int salary) {
+            this->name = name;
+            this->salary = salary;
+        }
+
+        virtual void printInfo() {
+            std::cout << "Info Employee:\n" << "name: " << this->name << '\n' << "salary: " << this->salary << '\n';
+        }
+};
+
+class Manager : public Employee {
+    private:
+        int allowance;
+    public:
+        Manager(std::string name, int salary, int allowance) : Employee(name, salary) {
+            this->allowance = allowance;
+        }
+
+        void printInfo() override {
+            Employee::printInfo();
+            std::cout << "allowance: " << this->allowance << '\n';
+        }
+};
+
+int main()
+{
+    Employee* manager = new Manager("Alex", 100, 100);
+    manager->printInfo();
+
+    std::cout << '\n';
+
+    Employee* employee = new Employee("Anton", 100);
+    manager->printInfo();
+}
